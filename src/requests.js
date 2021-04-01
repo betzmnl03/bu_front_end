@@ -4,7 +4,7 @@ export const Product = {
 
     index(category_id, subcategory_id){
         return fetch(`${BASE_URL}/categories/${category_id}/subcategories/${subcategory_id}/products`,{
-          credentials: "include"
+          credentials: "omit"
         })
         .then(res=>{
            
@@ -14,7 +14,7 @@ export const Product = {
     create(params) {
         return fetch(`${BASE_URL}/products`, {
           method: 'POST',
-          credentials: "include",
+          credentials: "omit",
           headers: {
             'Content-Type': 'application/json'
           },
@@ -23,7 +23,7 @@ export const Product = {
       },
       show(id) {
         return fetch(`${BASE_URL}/products/${id}`,{
-          credentials: "include"
+          credentials: "omit"
         })
           .then(res => 
             res.json())
@@ -34,7 +34,7 @@ export const User={
   create(params){
     return fetch(`${BASE_URL}/users`, {
       method: 'POST',
-      credentials: "include",
+      credentials: "omit",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -53,7 +53,7 @@ export const Session = {
         'Accept': 'application/json'
       },
       // mode:"cors",
-      credentials: "include", 
+      credentials: "omit", 
       method: 'POST',
       
       body: JSON.stringify(params)
@@ -63,8 +63,8 @@ export const Session = {
   },
   currentUser(){
     return fetch(`${BASE_URL}/current_user`,{
-      credentials: "include"
-       // We need to include a session in a request so we can fetch that particular user
+      credentials: "omit"
+       // We need to omit a session in a request so we can fetch that particular user
     })
     .then((res)=> res.json())
   },
@@ -81,7 +81,7 @@ export const Cart={
   create(id,size,quantity){
     return fetch(`${BASE_URL}/products/${id}/carts`, {
       method: 'POST',
-      credentials: "include",
+      credentials: "omit",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -91,20 +91,20 @@ export const Cart={
   },
   getCart(){
     return fetch(`${BASE_URL}/get_cart`,{
-      credentials: "include"
+      credentials: "omit"
     })
     .then(res => res.json());
   },
   getCartDetails(){
     return fetch(`${BASE_URL}/get_cart_details`,{
-      credentials: "include",
+      credentials: "omit",
     })
     .then(res => res.json());
   },
   delete(product_id,cart_id){
     return fetch(`${BASE_URL}/products/${product_id}/carts/${cart_id}`, {
       method: 'Delete',
-      credentials: "include",
+      credentials: "omit",
     }).then(res => res.json())
   }
 }
@@ -114,7 +114,7 @@ export const Wishlist={
   create(id){
     return fetch(`${BASE_URL}/products/${id}/wishlists`, {
       method: 'POST',
-      credentials: "include",
+      credentials: "omit",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -124,7 +124,7 @@ export const Wishlist={
   },
   getWishlist(){
     return fetch(`${BASE_URL}/get_wishlist`,{
-      credentials: "include",
+      credentials: "omit",
     })
     .then(res => res.json());
   },
@@ -132,12 +132,12 @@ export const Wishlist={
     console.log("here")
     return fetch(`${BASE_URL}/products/${product_id}/wishlists/${wishlist_id}`, {
       method: 'Delete',
-      credentials: "include",
+      credentials: "omit",
     }).then(res => res.json())
   },
   index(){
     return fetch(`${BASE_URL}/wishlists`,{
-      credentials: "include"
+      credentials: "omit"
     })
     .then(res=>{
         return res.json();
@@ -153,7 +153,7 @@ export const Order = {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: "include", // allows cookies to be recieved and sent from this request
+      credentials: "omit", // allows cookies to be recieved and sent from this request
       method: 'POST',
       body: JSON.stringify({address:address,firstname:firstname,lastname:lastname,phone:phone,amount:amount})
     }).then((res) => {
@@ -162,7 +162,7 @@ export const Order = {
   },
   index(){
     return fetch(`${BASE_URL}/orders`,{
-      credentials: "include"
+      credentials: "omit"
     })
     .then((res)=>{
      
@@ -172,7 +172,7 @@ export const Order = {
 show(id) {
 
   return fetch(`${BASE_URL}/orders/${id}`,{
-    credentials: "include"
+    credentials: "omit"
   })
     .then(res => 
       res.json())
@@ -187,7 +187,7 @@ export const OrderedProducts = {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: "include", // allows cookies to be recieved and sent from this request
+      credentials: "omit", // allows cookies to be recieved and sent from this request
       method: 'POST',
       body: JSON.stringify({order:order})
     }).then((res) => {
@@ -203,7 +203,7 @@ export const Address = {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: "include", // allows cookies to be recieved and sent from this request
+      credentials: "omit", // allows cookies to be recieved and sent from this request
       method: 'POST',
       body: JSON.stringify({address:params})
     }).then((res) => {
@@ -222,7 +222,7 @@ export const Search = {
         headers: {
           'Content-Type': 'application/json'
         },
-        credentials: "include",
+        credentials: "omit",
         method: "POST",
         body: JSON.stringify({params}) 
       })
@@ -241,7 +241,7 @@ export const Similar = {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: "include"
+      credentials: "omit"
       
       
     })
@@ -258,7 +258,7 @@ export const Review = {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: "include", // allows cookies to be recieved and sent from this request
+      credentials: "omit", // allows cookies to be recieved and sent from this request
       method: 'POST',
       body: JSON.stringify({review:params})
     }).then((res) => {
