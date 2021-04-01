@@ -53,7 +53,7 @@ export const Session = {
         'Accept': 'application/json'
       },
       // mode:"cors",
-      credentials: "omit", 
+      credentials: "include", 
       method: 'POST',
       
       body: JSON.stringify(params)
@@ -63,7 +63,7 @@ export const Session = {
   },
   currentUser(){
     return fetch(`${BASE_URL}/current_user`,{
-      credentials: "omit"
+      credentials: "include"
        // We need to include a session in a request so we can fetch that particular user
     })
     .then((res)=> res.json())
